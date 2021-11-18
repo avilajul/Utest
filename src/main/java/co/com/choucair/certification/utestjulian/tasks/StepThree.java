@@ -10,8 +10,18 @@ import net.serenitybdd.screenplay.actions.Enter;
 import org.openqa.selenium.Keys;
 
 public class StepThree implements Task {
-    public static StepThree fillIN() {
-        return Tasks.instrumented(StepThree.class);
+    private  String  strMobilDevice;
+    private String strModel;
+    private String strOs;
+
+    public StepThree(String strMobilDevice, String strModel, String strOs) {
+        this.strMobilDevice = strMobilDevice;
+        this.strModel = strModel;
+        this.strOs = strOs;
+    }
+
+    public static StepThree fillIN(String strMobilDevice, String strModel, String strOs) {
+        return Tasks.instrumented(StepThree.class, strMobilDevice, strModel, strOs);
     }
 
     @Override
@@ -23,7 +33,7 @@ public class StepThree implements Task {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        actor.attemptsTo(Enter.theValue("Motorola").into(StepThreePage.INPUT_MOBILE_DEVICE).thenHit(Keys.ENTER));
+        actor.attemptsTo(Enter.theValue(strMobilDevice).into(StepThreePage.INPUT_MOBILE_DEVICE).thenHit(Keys.ENTER));
 
         actor.attemptsTo(Click.on(StepThreePage.DIV_MODEL));
         try {
@@ -31,7 +41,7 @@ public class StepThree implements Task {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        actor.attemptsTo(Enter.theValue("Moto E7 Plus").into(StepThreePage.INPUT_MODEL).thenHit(Keys.ENTER));
+        actor.attemptsTo(Enter.theValue(strModel).into(StepThreePage.INPUT_MODEL).thenHit(Keys.ENTER));
 
         actor.attemptsTo(Click.on(StepThreePage.DIV_OPERATING_SYSTEM));
         try {
@@ -41,7 +51,7 @@ public class StepThree implements Task {
         }
 
         actor.attemptsTo(
-                Enter.theValue("Android 10").into(StepThreePage.INPUT_OPERATING_SYSTEM).thenHit(Keys.ENTER),
+                Enter.theValue(strOs).into(StepThreePage.INPUT_OPERATING_SYSTEM).thenHit(Keys.ENTER),
                 Click.on(StepThreePage.BUTTON_LAST_STEP)
         );
 

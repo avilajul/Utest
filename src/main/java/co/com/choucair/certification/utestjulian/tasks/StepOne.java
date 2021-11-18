@@ -12,20 +12,38 @@ import org.openqa.selenium.Keys;
 
 
 public class StepOne implements Task {
-    public static StepOne fillOut() {
-        return Tasks.instrumented(StepOne.class);
+    private String strFirstName;
+    private String strLastName;
+    private String strEmail;
+    private String strBirthMonth;
+    private String strBirthDay;
+    private String strBirthYear;
+    private String strLanguage;
+
+    public StepOne(String strFirstName, String strLastName, String strEmail, String strBirthMonth, String strBirthDay, String strBirthYear, String strLanguage) {
+        this.strFirstName = strFirstName;
+        this.strLastName = strLastName;
+        this.strEmail = strEmail;
+        this.strBirthMonth = strBirthMonth;
+        this.strBirthDay = strBirthDay;
+        this.strBirthYear = strBirthYear;
+        this.strLanguage = strLanguage;
+    }
+
+    public static StepOne fillOut( String strFirstName, String strLastName, String strEmail, String strBirthMonth, String strBirthDay, String strBirthYear, String strLanguage) {
+        return Tasks.instrumented(StepOne.class, strFirstName, strLastName, strEmail, strBirthMonth, strBirthDay, strBirthYear, strLanguage);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Enter.theValue("Julian Eduardo").into(StepOnePage.INPUT_FIRST_NAME),
-                Enter.theValue("Avila Tascon").into(StepOnePage.INPUT_LAST_NAME),
-                Enter.theValue("julian326avila@hotmail.com").into(StepOnePage.INPUT_EMAIL_ADDRESS),
-                SelectFromOptions.byVisibleText("March").from(StepOnePage.SELECT_BIRTH_MONTH),
-                SelectFromOptions.byVisibleText("26").from(StepOnePage.SELECT_BIRTH_DAY),
-                SelectFromOptions.byVisibleText("1984").from(StepOnePage.SELECT_BIRTH_YEAR),
-                Enter.theValue("Spanish").into(StepOnePage.INPUT_LANGUAGES).thenHit(Keys.ENTER),
+                Enter.theValue(strFirstName).into(StepOnePage.INPUT_FIRST_NAME),
+                Enter.theValue(strLastName).into(StepOnePage.INPUT_LAST_NAME),
+                Enter.theValue(strEmail).into(StepOnePage.INPUT_EMAIL_ADDRESS),
+                SelectFromOptions.byVisibleText(strBirthMonth).from(StepOnePage.SELECT_BIRTH_MONTH),
+                SelectFromOptions.byVisibleText(strBirthDay).from(StepOnePage.SELECT_BIRTH_DAY),
+                SelectFromOptions.byVisibleText(strBirthYear).from(StepOnePage.SELECT_BIRTH_YEAR),
+                Enter.theValue(strLanguage).into(StepOnePage.INPUT_LANGUAGES).thenHit(Keys.ENTER),
                 Click.on(StepOnePage.BUTTON_NEXT_LOCATION)
         );
 
