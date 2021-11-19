@@ -26,16 +26,6 @@ public class StepFour implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        /*actor.attemptsTo(
-
-                Enter.theValue(strPassword).into(StepFourPage.INPUT_PASSWORD),
-
-                Enter.theValue(strPaswordConfirm).into(StepFourPage.INPUT_CONFIRM_PASSWORD),
-                Click.on(StepFourPage.CHECK_TERM_OF_USE),
-                Click.on(StepFourPage.CHECK_PRIVACY),
-                Click.on(StepFourPage.BUTTON_COMPLETE_SETUP)
-        );*/
-
         actor.attemptsTo(Enter.theValue(strPassword).into(StepFourPage.INPUT_PASSWORD));
         try {
             Thread.sleep(3000);
@@ -57,10 +47,6 @@ public class StepFour implements Task {
             e.printStackTrace();
         }
         actor.attemptsTo(Click.on(StepFourPage.BUTTON_COMPLETE_SETUP));
-
-
-
-
 
     }
 }
