@@ -21,7 +21,7 @@ Feature: User Creation, as a user I want to register in the uTest community
     | <strMessage> |
     Examples:
       | strFirstName | strLastName | strEmail | strBirthMonth | strBirthDay | strBirthYear | strLanguage | strCity | strZip | strMobilDevice | strModel | strOs | strPassword | strPaswordConfirm | strMessage |
-      | Julian Eduardo | Avila Tascon | avilatas@gmail.com | March | 26 | 1984 | Spanish | Santa Marta | 763022 | Motorola | Moto E7 Plus | Android 10 | Choucair2021* | Choucair2021* | Welcome to the world's largest community of freelance software testers! |
+      | Julian Eduardo | Avila Tascon | avilatas12326@gmail.com | March | 26 | 1984 | Spanish | Santa Marta | 763022 | Motorola | Moto E7 Plus | Android 10 | Choucair2021* | Choucair2021* | Welcome to the world's largest community of freelance software testers! |
 
 
 
